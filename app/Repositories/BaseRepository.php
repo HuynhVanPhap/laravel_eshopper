@@ -20,6 +20,13 @@ abstract class BaseRepository
         $this->setModel();
     }
 
+    public function setModel()
+    {
+        $this->model = app()->make(
+            $this->getModel()
+        );
+    }
+
     abstract public function getModel();
 
     public function getLists()
@@ -68,13 +75,6 @@ abstract class BaseRepository
             ->get();
 
         return $data;
-    }
-
-    public function setModel()
-    {
-        $this->model = app()->make(
-            $this->getModel()
-        );
     }
 
     public function getListDESC($limit = self::LIMIT)

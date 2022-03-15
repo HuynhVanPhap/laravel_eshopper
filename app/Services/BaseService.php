@@ -10,7 +10,7 @@ class BaseService
 {
     public function __construct() {}
 
-    public function clearProtection(Request $request) {
+    public function clearVerification(Request $request) {
         $data = $request->except([
             '_token',
             'password_verify'
@@ -19,7 +19,7 @@ class BaseService
         return $data;
     }
 
-    public function setAlert($params, $messages) {
+    public function setMessage($params, $messages) {
         if (blank($params)) {
             Session::flash('fail', $messages.strtolower(__("Fail")));
         } else {
