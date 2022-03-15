@@ -10,7 +10,7 @@
     "Register Now": "Đăng kí ngay hôm nay",
     "Sign in using Facebook" : "Đăng nhâp bằng tài khoản Facebook",
     "Sign in using Google+" : "Đăng nhâp bằng tài khoản Google+",
-    "Remember Me" : "Lưu đăng nhập",
+    "Remember me" : "Lưu đăng nhập",
     "Or" : "Hoặc",
     "Password" : "Mật khẩu",
     "Password again": "Nhập lại mật khẩu",
@@ -35,5 +35,6 @@
     "Detail": "Chi tiết",
     "Create": "Thêm mới",
     "Edit": "Cập nhật",
-    "You dont agree to the terms": "Chấp nhận điều khoản hoặc không đăng kí gì hết -_-"
+    "You dont agree to the terms": "Chấp nhận điều khoản hoặc không đăng kí gì hết -_-",
+    "Login fail": "Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu"
 }
