@@ -11,13 +11,15 @@
     "Sign in using Facebook" : "Đăng nhâp bằng tài khoản Facebook",
     "Sign in using Google+" : "Đăng nhâp bằng tài khoản Google+",
     "Remember Me" : "Lưu đăng nhập",
-    "OR" : "Hoặc",
+    "Or" : "Hoặc",
     "Password" : "Mật khẩu",
     "Password again": "Nhập lại mật khẩu",
     "I forgot my password" : "Quên mật khẩu",
     "Forgot password": "Quên mật khẩu",
     "Sign in to start your session" : "Bắt đầu phiên làm việc của bạn",
     "Already have an account": "Đã có tài khoản",
+    "Terms": "Điều khoản",
+    "I agree to the": "Tôi đồng ý với",
     "Email" : "Địa chỉ Email",
     "Password verify" : "Xác nhận mật khẩu",
     "Required rule" : "Nhập :input. :input không được để trống",
@@ -32,5 +34,6 @@
     "List": "Danh sách",
     "Detail": "Chi tiết",
     "Create": "Thêm mới",
-    "Edit": "Cập nhật"
+    "Edit": "Cập nhật",
+    "You dont agree to the terms": "Chấp nhận điều khoản hoặc không đăng kí gì hết -_-"
 }
