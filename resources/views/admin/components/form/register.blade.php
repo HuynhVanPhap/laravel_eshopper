@@ -91,7 +91,7 @@
     </div>
     <div class="row">
         <div class="col-8">
-            <a href="#" class="text-center">{{ __('Already have an account') }}</a>
+            <a href="{{ route('get.admin.login.page') }}" class="text-center">{{ __('Already have an account') }}</a>
         </div>
 
         <div class="col-4">

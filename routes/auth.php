@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\Admin\AuthController;
+use App\Http\Controllers\Web\Admin\AuthController as AdminAuth;
 
 Route::prefix('admin')->group(function () {
     Route::middleware('guest:admin')->group(function () {

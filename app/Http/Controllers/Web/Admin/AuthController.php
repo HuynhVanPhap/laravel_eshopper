@@ -7,17 +7,18 @@ use App\Services\AuthService;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use App\Http\Requests\Auth\Admin\RegisterValidation;
+use App\Http\Requests\Auth\Admin\LoginValidation;
 
 class AuthController extends Controller
 {
-    protected $userService;
+    protected $authService;
     protected $userRepo;
 
     public function __construct(
-        UserService $userService,
+        AuthService $authService,
         UserRepository $userRepo
     ) {
-        $this->userService = $userService;
+        $this->authService = $authService;
         $this->userRepo = $userRepo;
     }
 
@@ -26,10 +27,10 @@ class AuthController extends Controller
     }
 
     public function handleRegister(RegisterValidation $request) {
-        $newUser = $this->userService->clearVerification($request);
-        $newUser = $this->userService->hashPassword($newUser);
+        $newUser = $this->authService->clearVerification($request);
+        $newUser = $this->authService->hashPassword($newUser);
 
-        $this->userService->setMessage(
+        $this->authService->setMessage(
             $this->userRepo->create($newUser),
             __("Register")
         );

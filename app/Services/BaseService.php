@@ -28,12 +28,4 @@ class BaseService
 
         return;
     }
-
-    public function hashPassword($user) {
-        if (isset($user['password'])) {
-            $user['password'] = Hash::make($user['password']);
-        }
-
-        return $user;
-    }
 }
