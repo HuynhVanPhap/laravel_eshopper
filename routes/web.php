@@ -15,5 +15,7 @@ use App\Http\Controllers\Web\Admin\HomeController;
 */
 
 Route::prefix('admin')->group(function () {
-    Route::get('dashboard', [HomeController::class, 'getDashboardPage'])->name('get.admin.dashboard.page');
+    Route::middleware('auth.verify:admin')->group(function () {
+        Route::get('dashboard', [HomeController::class, 'getDashboardPage'])->name('get.admin.dashboard.page');
+    });
 });
