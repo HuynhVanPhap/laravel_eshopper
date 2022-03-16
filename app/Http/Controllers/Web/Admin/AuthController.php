@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\AuthService;
+use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use App\Http\Requests\Auth\Admin\RegisterValidation;
 use App\Http\Requests\Auth\Admin\LoginValidation;
@@ -34,7 +35,7 @@ class AuthController extends Controller
             __("Register")
         );
 
-        return back();
+        return redirect()->route('get.admin.login.page');
     }
 
     public function getLoginPage() {
@@ -49,5 +50,11 @@ class AuthController extends Controller
         $this->authService->setMessageFailAuth();
 
         return back();
+    }
+
+    public function handleLogOut(Request $request) {
+        $this->authService->makeLogout($request, 'admin');
+
+        return redirect()->route('get.admin.login.page');
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\Services\BaseService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Session;
 
 class AuthService extends BaseService
@@ -27,6 +29,16 @@ class AuthService extends BaseService
 
     public function setMessageFailAuth() {
         Session::flash('fail', __('Login fail'));
+        return;
+    }
+
+    public function makeLogout(Request $request, $guard) {
+        Auth::guard($guard)->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return;
     }
 }
