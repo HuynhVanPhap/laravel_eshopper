@@ -11,7 +11,6 @@ use Carbon\Carbon;
 
 abstract class BaseRepository
 {
-
     protected $model;
     const LIMIT = 10;
 

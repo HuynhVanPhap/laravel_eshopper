@@ -19,7 +19,8 @@ class UserSeeder extends Seeder
         $data = [
 
             [
-                "name" => "Quyền lực tối cao",
+                "first_name" => "Huỳnh Văn",
+                "last_name" => "Pháp",
                 "email" => "huynhvanphap198@gmail.com",
                 "password" => Hash::make('Ab12345!'),
                 "remember_token" => ""
