@@ -3,7 +3,6 @@
     $name = $name ?? '';
     $placeholder = $placeholder ?? '';
     $defaultValue = $defaultValue ?? '';
-    // dd('Input - '.old('name'));
 @endphp
 
 <input
@@ -16,5 +15,5 @@
 >
 
 @if ($errors->has($name))
-<span id="exampleInputPassword1-error" class="error invalid-feedback">{{ $errors->first($name) }}</span>
+    <span id="exampleInputPassword1-error" class="error invalid-feedback">{{ $errors->first($name) }}</span>
 @endif

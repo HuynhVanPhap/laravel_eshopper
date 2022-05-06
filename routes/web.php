@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Admin\HomeController;
 use App\Http\Controllers\Web\Admin\CategoryController;
+use App\Http\Controllers\Web\Admin\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [HomeController::class, 'getDashboardPage'])->name('get.admin.home.page');
         Route::get('dashboard', [HomeController::class, 'getDashboardPage'])->name('get.admin.dashboard.page');
         Route::resource('categories', CategoryController::class);
+        Route::resource('brands', BrandController::class);
     });
 });
