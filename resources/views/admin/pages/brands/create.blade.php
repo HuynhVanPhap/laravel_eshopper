@@ -6,7 +6,7 @@
 
 @section('content')
 @include('admin.components.default.content-header', [
-    'header' => __('Brand'),
+    'header' => __('Create'),
     'route' => 'brands.create'
 ])
 

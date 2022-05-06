@@ -12,4 +12,23 @@ class BrandRepository extends BaseRepository
     {
         return \App\Models\Brand::class;
     }
+
+    public function search($params) {
+        $data = $this->model->select();
+
+        if (isset($params['name_search'])) {
+            $data->whereName($params['name_search']);
+        }
+
+        if (isset($params['category_id_search'])) {
+            $data->whereCategoryId($params['category_id_search']);
+        }
+
+        if (isset($params['display_search'])) {
+            $data->whereDisplay($params['display_search']);
+        }
+
+        return $data->orderBy('id', 'DESC')
+                    ->paginate(parent::LIMIT);
+    }
 }

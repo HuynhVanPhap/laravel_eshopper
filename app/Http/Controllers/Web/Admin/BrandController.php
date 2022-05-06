@@ -9,6 +9,7 @@ use App\Repositories\CategoryRepository;
 use App\Repositories\BrandRepository;
 use App\Services\BrandService;
 use App\Models\Brand;
+use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
@@ -30,9 +31,16 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $brands = $this->brandRepo->search($request->all());
+        $categories = $this->categoryRepo->getLists();
+        $request->flash();
+
+        return view('admin.pages.brands.index')->with([
+            'brands' => $brands,
+            'categories' => $categories
+        ]);
     }
 
     /**

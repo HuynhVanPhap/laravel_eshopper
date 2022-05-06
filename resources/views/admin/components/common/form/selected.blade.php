@@ -22,7 +22,7 @@
     <option
         value="{{$item['id']}}"
         {{-- @selected(old($name) == $item['id']) --}}
-        {{ (old($name, $defaultValue) === $item['id']) ? 'selected' : '' }}
+        {{ ((int)old($name, $defaultValue) === $item['id']) ? 'selected' : '' }}
     >
         {{ $item['name'] }}
     </option>
@@ -37,3 +37,4 @@
 @if ($errors->has($name))
     <span id="exampleInputPassword1-error" class="error invalid-feedback">{{ $errors->first($name) }}</span>
 @endif
+
