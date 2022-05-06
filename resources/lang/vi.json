@@ -25,7 +25,7 @@
     "Password verify" : "Xác nhận mật khẩu",
     "Required rule" : "Nhập :input. :input không được để trống",
     "Email rule" : "Địa chỉ Email không hợp lệ",
-    "Unique rule" : ":input đã tồn tại, vui lòng thử :name khác",
+    "Unique rule" : ":input đã tồn tại trong kho dữ liệu",
     "Same rule" : ":input không chính xác, vui lòng nhập lại",
     "First name" : "Họ",
     "Last name": "Tên",
@@ -38,7 +38,6 @@
     "Edit": "Cập nhật",
     "You dont agree to the terms": "Chấp nhận điều khoản hoặc không đăng kí gì hết -_-",
     "Login fail": "Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu",
-    "Store": "Cửa hàng",
     "Category": "Danh mục",
     "Form": "Biểu mẫu",
     "Save": "Lưu",
@@ -57,5 +56,7 @@
     "Search": "Tìm kiếm",
     "Filter": "Bộ lọc",
     "Display": "Hiển thị",
-    "Default": "Mặc định"
+    "Default": "Mặc định",
+    "Brand": "Nhãn hiệu",
+    "Product": "Sản phẩm"
 }

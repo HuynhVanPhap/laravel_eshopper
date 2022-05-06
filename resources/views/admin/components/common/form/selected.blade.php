@@ -7,13 +7,17 @@
     $defaultValue = $defaultValue ?? '';
 @endphp
 
-<select class="form-control select2" name="{{ $name }}" {{ ($required) ? 'required' : '' }}
-    @if($disabled) {{'disabled'}} @endif>
-    >
+<select
+    class="form-control select2 {{ $errors->has($name) ? 'is-invalid' : ''}}"
+    name="{{ $name }}" {{ ($required) ? 'required' : '' }}
+    @if($disabled)
+        {{'disabled'}}
+    @endif
+>
     @if(isset($data))
-    <option value="">
-        {{ __('Default') }}
-    </option>
+        <option value="">
+            {{ __('Default') }}
+        </option>
     @foreach($data as $key => $item)
     <option
         value="{{$item['id']}}"
@@ -24,8 +28,12 @@
     </option>
     @endforeach
     @else
-    <option value="">
-        {{ __('Default') }}
-    </option>
+        <option value="">
+            {{ __('Default') }}
+        </option>
     @endif
 </select>
+
+@if ($errors->has($name))
+    <span id="exampleInputPassword1-error" class="error invalid-feedback">{{ $errors->first($name) }}</span>
+@endif

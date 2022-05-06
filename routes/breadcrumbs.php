@@ -22,3 +22,12 @@ Breadcrumbs::for('categories.edit', function (BreadcrumbTrail $trail, Category $
     $trail->push($category->name, route('categories.edit', $category));
 });
 
+Breadcrumbs::for('brands.index', function (BreadcrumbTrail $trail) {
+    $trail->push(__('Brand'), route('brands.index'));
+});
+
+Breadcrumbs::for('brands.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('brands.index');
+    $trail->push(__('Create'), route('brands.create'));
+});
+
