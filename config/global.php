@@ -3,7 +3,7 @@
 return [
     'display' => [
         [
-            'id' => 0,
+            'id' => -1,
             'name' => 'No'
         ],
         [

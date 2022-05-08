@@ -72,8 +72,7 @@ class BrandController extends Controller
             __("Brand").' '.__("Create")
         );
 
-        // return redirect()->route('brands.index');
-        return back();
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -95,7 +94,12 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        $categories = $this->categoryRepo->getLists();
+
+        return view('admin.pages.brands.edit')->with([
+            'brand' => $brand,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -107,7 +111,12 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        $this->brandService->setMessage(
+            $brand->update($this->brandService->getDataUpdate($request)),
+            __("Brand").' '.__("Edit")
+        );
+
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -119,5 +128,13 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         //
+    }
+
+    public function toggleDisplay(Brand $brand) {
+        if (blank($brand)) {
+            return 0;
+        }
+
+        return $brand->update(['display' => !$brand->display]);
     }
 }

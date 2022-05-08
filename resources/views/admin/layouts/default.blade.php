@@ -41,6 +41,7 @@
 
     <!-- Toastr -->
     <link rel="stylesheet" href="{{ asset('admin/theme/plugins/toastr/toastr.min.css') }}">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -136,14 +137,12 @@
 
     {{-- <script src="{{ asset('admin/theme/dist/js/demo.js') }}"></script> --}}
 
-    <script src="{{ asset('admin/theme/dist/js/pages/dashboard.js') }}"></script>
-
-
     @include('admin.scripts.common')
 
     @include('admin.components.common.toast.success')
     @include('admin.components.common.toast.error')
 
+    @yield('script')
 </body>
 
 </html>

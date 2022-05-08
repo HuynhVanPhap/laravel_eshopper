@@ -3,6 +3,7 @@
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use App\Models\Category;
+use App\Models\Brand;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push(__('Dashboard'), route('get.admin.home.page'));
@@ -29,5 +30,10 @@ Breadcrumbs::for('brands.index', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('brands.create', function (BreadcrumbTrail $trail) {
     $trail->parent('brands.index');
     $trail->push(__('Create'), route('brands.create'));
+});
+
+Breadcrumbs::for('brands.edit', function (BreadcrumbTrail $trail, Brand $brands) {
+    $trail->parent('brands.index');
+    $trail->push($brands->name, route('brands.edit', $brands));
 });
 

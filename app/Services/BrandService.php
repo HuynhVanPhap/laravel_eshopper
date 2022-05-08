@@ -16,4 +16,12 @@ class BrandService extends BaseService
 
         return $brand;
     }
+
+    public function getDataUpdate(Request $request) {
+        return [
+            'name' => $request->name,
+            'slug' => $this->makeSlug($request->name),
+            'category_id' => $request->category_id
+        ];
+    }
 }

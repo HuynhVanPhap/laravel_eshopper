@@ -13,7 +13,7 @@ class UpdateBrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,22 @@ class UpdateBrandRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'name' => ['required', 'unique:brands,id,name'],
+            'category_id' => ['required']
         ];
+
+        return $rules;
+    }
+
+    public function messages()
+    {
+        $messages = [
+            'name.required' => __('Required rule', ['input' => __('Category')]),
+            'name.unique' => __('Unique rule', ['input' => __('Brand')]),
+            'category_id.required' => __('Required rule', ['input' => __('Category')])
+        ];
+
+        return $messages;
     }
 }

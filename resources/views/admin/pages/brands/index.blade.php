@@ -93,15 +93,28 @@
                                                         <td>{{ $brand->name }}</td>
                                                         <td>{{ $brand->code }}</td>
                                                         <td>
-                                                            <input
-                                                                type="checkbox"
-                                                                name="my-checkbox"
-                                                                data-size="sm"
-                                                                {{ ($brand->display) ? 'checked' : '' }}
-                                                                data-toggle="toggle"
-                                                                data-Brand-id="{{ $brand->id }}"
-                                                                data-bootstrap-switch
-                                                            >
+                                                            {{-- <div class="toggle-display">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    class="data-bootstrap-switch"
+                                                                    name="display"
+                                                                    data-size="sm"
+                                                                    {{ ($brand->display) ? 'checked' : '' }}
+                                                                    data-toggle="toggle"
+                                                                    data-brand-id="{{ $brand->id }}"
+                                                                >
+                                                            </div> --}}
+                                                            <div class="custom-control custom-switch">
+                                                                <input
+                                                                    {{ ($brand->display) ? 'checked' : '' }}
+                                                                    data-brand-id="{{ $brand->id }}"
+                                                                    type="checkbox"
+                                                                    class="custom-control-input toggle-display"
+                                                                    id="switch1"
+                                                                    name="example"
+                                                                >
+                                                                <label class="custom-control-label" for="switch1"></label>
+                                                            </div>
                                                         </td>
                                                         <td>{{ $brand->category->name }}</td>
                                                         <td>
@@ -142,7 +155,6 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-5">
                                     <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
-                                        {{-- Showing 1 to 10 of 57 entries --}}
                                         {{ __('Show entries', [
                                             'showing' => $brands->perPage() * ($brands->currentPage() - 1) + count($brands),
                                             'entrie' => $brands->total()
@@ -157,10 +169,34 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endsection
+
+@section('script')
+    <script>
+        $(".toggle-display").on("change", function () {
+            let id = $(this).data("brand-id");
+
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                cache: false,
+                url: "/admin/brand/toggle/display/" + id,
+
+                success: function (res) {
+                    if (res > 0) {
+                        toastr.success("{{ __('Update display') }}");
+                    }
+                },
+
+                error: function (error) {
+                    alert("{{ __('Something went wrong') }}");
+                }
+            });
+        });
+    </script>
 @endsection
