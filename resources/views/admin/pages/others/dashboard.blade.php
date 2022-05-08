@@ -600,3 +600,7 @@
         </div>
     </section>
 @endsection
+
+@section('script')
+    <script src="{{ asset('admin/theme/dist/js/pages/dashboard.js') }}"></script>
+@endsection

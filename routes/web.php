@@ -22,5 +22,8 @@ Route::prefix('admin')->group(function () {
         Route::get('dashboard', [HomeController::class, 'getDashboardPage'])->name('get.admin.dashboard.page');
         Route::resource('categories', CategoryController::class);
         Route::resource('brands', BrandController::class);
+
+        # -------------- XMLRequest ------------------ #
+        Route::get('brand/toggle/display/{brand}', [BrandController::class, 'toggleDisplay'])->name('put.admin.brand.toggle.display');
     });
 });
