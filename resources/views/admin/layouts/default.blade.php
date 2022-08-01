@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+    <link rel="stylesheet" href="{{ asset('admin/theme/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/theme/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('admin/theme/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
@@ -135,6 +136,10 @@
 
     <script src="{{ asset('admin/theme/dist/js/adminlte.js?v=3.2.0') }}"></script>
 
+    <script src="{{ asset('admin/theme/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
+    {{-- Axios config --}}
+    {{-- <script src="{{ asset('admin/js/axios-config.js') }}"></script> --}}
     {{-- <script src="{{ asset('admin/theme/dist/js/demo.js') }}"></script> --}}
 
     @include('admin.scripts.common')
@@ -142,6 +147,11 @@
     @include('admin.components.common.toast.success')
     @include('admin.components.common.toast.error')
 
+    {{-- <script>
+        $("#select-category").on("click", function () {
+            alert('Xin chào');
+        });
+    </script> --}}
     @yield('script')
 </body>
 

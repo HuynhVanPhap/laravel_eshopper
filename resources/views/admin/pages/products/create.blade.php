@@ -1,13 +1,13 @@
 @extends('admin.layouts.default')
 
 @section('title')
-{{ __('Brand') }}
+{{ __('Product') }}
 @endsection
 
 @section('content')
 @include('admin.components.default.content-header', [
     'header' => __('Create'),
-    'route' => 'brands.create'
+    'route' => 'products.create'
 ])
 
 <section class="content">
@@ -19,9 +19,7 @@
                 </h3>
             </div>
 
-            @include('admin.components.form.brands.create', [
-                'categories' => $categories->toArray()
-            ])
+            @include('admin.components.form.products.create')
         </div>
     </div>
 </section>

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Admin\HomeController;
 use App\Http\Controllers\Web\Admin\CategoryController;
 use App\Http\Controllers\Web\Admin\BrandController;
+use App\Http\Controllers\Web\Admin\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +24,10 @@ Route::prefix('admin')->group(function () {
         Route::get('dashboard', [HomeController::class, 'getDashboardPage'])->name('get.admin.dashboard.page');
         Route::resource('categories', CategoryController::class);
         Route::resource('brands', BrandController::class);
+        Route::resource('products', ProductController::class);
 
         # -------------- XMLRequest ------------------ #
         Route::get('brand/toggle/display/{brand}', [BrandController::class, 'toggleDisplay'])->name('put.admin.brand.toggle.display');
+        Route::post('brand/selected', [BrandController::class, 'makeBrandSelectedByCategory'])->name('selected.brand');
     });
 });

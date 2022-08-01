@@ -24,4 +24,6 @@ class Category extends Model
     ];
 
     protected $dates = ['deleted_at'];
+    protected $hidden = ['pivot']; // Thứ này sẽ giúp không phải get thêm data từ pivot một cách tự động
+
 }

@@ -37,3 +37,11 @@ Breadcrumbs::for('brands.edit', function (BreadcrumbTrail $trail, Brand $brands)
     $trail->push($brands->name, route('brands.edit', $brands));
 });
 
+Breadcrumbs::for('products.index', function (BreadcrumbTrail $trail) {
+    $trail->push(__('Product'), route('products.index'));
+});
+
+Breadcrumbs::for('products.create', function (BreadcrumbTrail $trail) {
+    $trail->parent('products.index');
+    $trail->push(__('Create'), route('products.create'));
+});
