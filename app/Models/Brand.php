@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Brand extends Model
 {
@@ -15,8 +16,7 @@ class Brand extends Model
         "name",
         "slug",
         "code",
-        "display",
-        "category_id"
+        "display"
     ];
 
     // Cover type of display field: tinyInt to boolean
@@ -25,14 +25,15 @@ class Brand extends Model
     ];
 
     protected $dates = ['deleted_at'];
+    protected $hidden = ['pivot']; // Thứ này sẽ giúp không phải get thêm data từ pivot một cách tự động
 
     /**
      * Get the category that owns the Brand
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function category()
+    public function categories(): BelongsToMany
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->belongsToMany(Category::class, 'brand_category', 'brand_id', 'category_id');
     }
 }

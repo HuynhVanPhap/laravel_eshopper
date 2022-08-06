@@ -68,7 +68,7 @@ class BrandController extends Controller
         $brand = $this->brandService->getDataStore($request);
 
         $this->brandService->setMessage(
-            $this->brandRepo->create($brand),
+            $this->brandRepo->storeManyToMany($brand, $request->categories),
             __("Brand").' '.__("Create")
         );
 
@@ -111,8 +111,10 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
+        $brandParams = $this->brandService->getDataUpdate($request);
+
         $this->brandService->setMessage(
-            $brand->update($this->brandService->getDataUpdate($request)),
+            $this->brandRepo->updateBrand($brand, $brandParams, $request->categories),
             __("Brand").' '.__("Edit")
         );
 
@@ -127,7 +129,12 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        $this->brandService->setMessage(
+            $this->brandRepo->deleteBrand($brand),
+            __("Brand").' '.__("Remove")
+        );
+
+        return redirect()->route('brands.index');
     }
 
     public function toggleDisplay(Brand $brand) {
@@ -136,5 +143,18 @@ class BrandController extends Controller
         }
 
         return $brand->update(['display' => !$brand->display]);
+    }
+
+    public function makeBrandSelectedByCategory(Request $request) {
+        $brands = $this->brandRepo->getBrandsByCategoryId((int) $request->categoryId);
+
+        // $html = view('admin.components.common.form.selected')->with([
+        //     'name' => 'brand_id',
+        //     'data' => $brands,
+        //     'default' => false,
+        //     'id' => 'select-brand'
+        // ])->render();
+
+        return response()->json(array('success' => true, 'brands'=>$brands));
     }
 }

@@ -40,8 +40,11 @@
                 <div class="form-group row">
                     <div class="col-sm-12">
                         @include('admin.components.common.form.selected', [
-                            'name' => 'category_id',
-                            'data' => $categories
+                            'name' => 'categories[]',
+                            'data' => $categories,
+                            'multiple' => true,
+                            'default' => false,
+                            'placeholder' => "Choose brand's categories"
                         ])
                     </div>
                 </div>

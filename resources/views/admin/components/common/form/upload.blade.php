@@ -1,27 +1,21 @@
 @php
-    $label = $label ?? ''; // Not Use
     $name = $name ?? '';
     $placeholder = $placeholder ?? '';
     $defaultValue = $defaultValue ?? '';
     $classes = $classes ?? '';
-    $id = $id ?? '';
-    $numeric = $numeric ?? false;
+    $defaultValue = $defaultValue ?? '';
 @endphp
 
 <input
-    type="text"
-    id="{{ $id }}"
-    placeholder="{{ $placeholder }}"
+    type="file"
+    class="custom-file-input {{ $classes }} {{ $errors->has($name) ? 'is-invalid' : ''}}"
+    id="customFile"
     name="{{ $name }}"
     value="{{ old($name, $defaultValue) }}"
-    @class([
-        'form-control',
-        'is-invalid' => $errors->has($name),
-        'numeral-input' => $numeric,
-        $classes
-    ])
 >
 
-@if ($errors->has($name))
+<label class="custom-file-label" for="customFile">{{ $placeholder }}</label>
+
+    @if ($errors->has($name))
     <span id="exampleInputPassword1-error" class="error invalid-feedback">{{ $errors->first($name) }}</span>
 @endif

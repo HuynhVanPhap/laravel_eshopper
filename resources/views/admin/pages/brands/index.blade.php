@@ -116,7 +116,7 @@
                                                                 <label class="custom-control-label" for="switch1"></label>
                                                             </div>
                                                         </td>
-                                                        <td>{{ $brand->category->name }}</td>
+                                                        <td></td>
                                                         <td>
                                                             <a
                                                                 href="{{ route('brands.edit', $brand->id) }}"

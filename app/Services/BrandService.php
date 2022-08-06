@@ -11,6 +11,7 @@ class BrandService extends BaseService
 
     public function getDataStore(Request $request) {
         $brand = $this->clearVerification($request);
+        $brand = $request->all(['name']);
         $brand['slug'] = $this->makeSlug($brand['name']);
         $brand['code'] = $this->codeShuffle(10);
 

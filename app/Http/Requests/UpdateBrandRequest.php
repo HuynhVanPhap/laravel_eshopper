@@ -25,7 +25,7 @@ class UpdateBrandRequest extends FormRequest
     {
         $rules = [
             'name' => ['required', 'unique:brands,id,name'],
-            'category_id' => ['required']
+            'categories' => ['required']
         ];
 
         return $rules;
@@ -36,7 +36,7 @@ class UpdateBrandRequest extends FormRequest
         $messages = [
             'name.required' => __('Required rule', ['input' => __('Category')]),
             'name.unique' => __('Unique rule', ['input' => __('Brand')]),
-            'category_id.required' => __('Required rule', ['input' => __('Category')])
+            'categories.required' => __('Required rule', ['input' => __('Category')])
         ];
 
         return $messages;

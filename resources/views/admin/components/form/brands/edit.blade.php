@@ -38,9 +38,12 @@
                 <div class="form-group row">
                     <div class="col-sm-12">
                         @include('admin.components.common.form.selected', [
-                            'name' => 'category_id',
+                            'name' => 'categories[]',
                             'data' => $categories,
-                            'defaultValue' => $brand->category->id
+                            'multiple' => true,
+                            'default' => false,
+                            'placeholder' => "Choose brand's categories",
+                            'defaultArray' => Arr::pluck($brand->categories, 'id')
                         ])
                     </div>
                 </div>
