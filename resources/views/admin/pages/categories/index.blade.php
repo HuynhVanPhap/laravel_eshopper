@@ -46,34 +46,6 @@
 
                     <div class="card-body">
                         <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                            {{-- <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                    <div class="dt-buttons btn-group flex-wrap"> <button
-                                            class="btn btn-secondary buttons-copy buttons-html5" tabindex="0"
-                                            aria-controls="example1" type="button"><span>Copy</span></button> <button
-                                            class="btn btn-secondary buttons-csv buttons-html5" tabindex="0"
-                                            aria-controls="example1" type="button"><span>CSV</span></button> <button
-                                            class="btn btn-secondary buttons-excel buttons-html5" tabindex="0"
-                                            aria-controls="example1" type="button"><span>Excel</span></button> <button
-                                            class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0"
-                                            aria-controls="example1" type="button"><span>PDF</span></button> <button
-                                            class="btn btn-secondary buttons-print" tabindex="0"
-                                            aria-controls="example1" type="button"><span>Print</span></button>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div id="example1_filter" class="dataTables_filter">
-                                        <label>Search:
-                                            <input
-                                                type="search"
-                                                class="form-control form-control-sm"
-                                                placeholder=""
-                                                aria-controls="example1"
-                                            >
-                                        </label>
-                                    </div>
-                                </div>
-                            </div> --}}
                             <div class="row">
                                 <div class="col-sm-12">
                                     <table id="example1"
@@ -95,6 +67,10 @@
                                                     {{ __("Category's Code") }}
                                                 </th>
                                                 <th tabindex="0" aria-controls="example1" rowspan="1"
+                                                    colspan="1" aria-label="Browser: activate to sort column ascending">
+                                                    {{ __("Brand") }}
+                                                </th>
+                                                <th tabindex="0" aria-controls="example1" rowspan="1"
                                                     colspan="1"
                                                     aria-label="Platform(s): activate to sort column ascending">
                                                     {{ __('Display') }}
@@ -113,6 +89,11 @@
                                                         <td>{{ ++$key }}</td>
                                                         <td>{{ $category->name }}</td>
                                                         <td>{{ $category->code }}</td>
+                                                        <td>
+                                                            @foreach ($category->brands as $brand)
+                                                                <span class="badge badge-primary">{{ $brand->name }}</span>
+                                                            @endforeach
+                                                        </td>
                                                         <td>
                                                             <input
                                                                 type="checkbox"

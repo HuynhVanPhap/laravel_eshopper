@@ -8,16 +8,47 @@
 
     <div class="card-body">
         <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
-                {{ __('Name').' '.__('Category') }}
-            </label>
-            <div class="col-sm-10">
-                @include('admin.components.common.form.input', [
-                    'label' => __('Name').' '.__('Category'),
-                    'name' => 'name',
-                    'placeholder' => __('Name').' '.__('Category'),
-                    'defaultValue' => $category->name
-                ])
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        @include('admin.components.common.form.label', [
+                            'label' => __('Name').' '.__('Category')
+                        ])
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        @include('admin.components.common.form.input', [
+                            'label' => __('Name').' '.__('Category'),
+                            'name' => 'name',
+                            'placeholder' => __('Name').' '.__('Category'),
+                            'defaultValue' => $category->name
+                        ])
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        @include('admin.components.common.form.label', [
+                            'label' => __('Brand').' '.__('Product')
+                        ])
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        @include('admin.components.common.form.selected', [
+                            'name' => 'brands[]',
+                            'data' => $brands,
+                            'multiple' => true,
+                            'default' => false,
+                            'placeholder' => "Choose brand's categories",
+                            'defaultArray' => Arr::pluck($category->brands, 'id')
+                        ])
+                    </div>
+                </div>
             </div>
         </div>
     </div>

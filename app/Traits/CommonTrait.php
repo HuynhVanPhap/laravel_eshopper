@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 trait CommonTrait
 {
     public function setMessage($params, $messages) {
-        if (blank($params)) {
+        if (
+            blank($params) ||
+            !$params
+        ) {
             Session::flash('fail', $messages.' '.strtolower(__("Fail")));
         } else {
             Session::flash('success', $messages.' '.strtolower(__("Success")));

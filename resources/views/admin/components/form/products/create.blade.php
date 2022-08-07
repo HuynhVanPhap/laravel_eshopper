@@ -73,7 +73,7 @@
                 <div class="form-group row">
                     @include('admin.components.common.form.label', [
                         'label' => 'Brand'
-                        ])
+                    ])
                     <div class="col-sm-12">
                         @include('admin.components.common.form.selected', [
                             'name' => 'brand_id',
