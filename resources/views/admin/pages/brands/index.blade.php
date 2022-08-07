@@ -116,7 +116,11 @@
                                                                 <label class="custom-control-label" for="switch1"></label>
                                                             </div>
                                                         </td>
-                                                        <td></td>
+                                                        <td>
+                                                            @foreach ($brand->categories as $category)
+                                                                <span class="badge badge-primary">{{ $category->name }}</span>
+                                                            @endforeach
+                                                        </td>
                                                         <td>
                                                             <a
                                                                 href="{{ route('brands.edit', $brand->id) }}"

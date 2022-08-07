@@ -24,7 +24,8 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => ['required'],
+            'name' => ['required', 'unique:categories,id,name'],
+            'brands' => ['required']
         ];
 
         return $rules;
@@ -34,6 +35,8 @@ class UpdateCategoryRequest extends FormRequest
     {
         $messages = [
             'name.required' => __('Required rule', ['input' => __('Category')]),
+            'name.unique' => __('Unique rule', ['input' => __('Category')]),
+            'brands.required' => __('Required rule', ['input' => __('Brand')])
         ];
 
         return $messages;

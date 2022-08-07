@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
 use App\Repositories\CategoryRepository;
+use App\Repositories\BrandRepository;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
@@ -13,13 +14,16 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     protected $categoryRepo;
+    protected $brandRepo;
     protected $categoryService;
 
     public function __construct(
         CategoryRepository $categoryRepo,
+        BrandRepository $brandRepo,
         CategoryService $categoryService
     ) {
         $this->categoryRepo = $categoryRepo;
+        $this->brandRepo = $brandRepo;
         $this->categoryService = $categoryService;
     }
     /**
@@ -42,7 +46,9 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        return view('admin.pages.categories.create');
+        $brands = $this->brandRepo->getLists();
+
+        return view('admin.pages.categories.create', compact('brands'));
     }
 
     /**
@@ -56,7 +62,7 @@ class CategoryController extends Controller
         $category = $this->categoryService->getDataStore($request);
 
         $this->categoryService->setMessage(
-            $this->categoryRepo->create($category),
+            $this->categoryRepo->storeManyToMany($category, $request->brands),
             __("Category")
         );
 
@@ -82,7 +88,12 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.pages.categories.edit', compact('category'));
+        $brands = $this->brandRepo->getLists();
+
+        return view('admin.pages.categories.edit')->with([
+            'category' => $category,
+            'brands' => $brands
+        ]);
     }
 
     /**
@@ -94,8 +105,10 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
+        $categoryParams = $this->categoryService->getDataUpdate($request);
+
         $this->categoryService->setMessage(
-            $category->update($this->categoryService->getDataUpdate($request)),
+            $this->categoryRepo->updateCategory($category, $categoryParams, $request->brands),
             __("Category")
         );
 

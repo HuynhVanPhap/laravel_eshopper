@@ -2,6 +2,9 @@
 
 namespace App\Repositories;
 
+use Illuminate\Support\Facades\DB;
+use App\Models\Category;
+
 class CategoryRepository extends BaseRepository
 {
     /**
@@ -10,7 +13,7 @@ class CategoryRepository extends BaseRepository
      */
     public function getModel()
     {
-        return \App\Models\Category::class;
+        return Category::class;
     }
 
     public function search($params) {
@@ -26,5 +29,35 @@ class CategoryRepository extends BaseRepository
 
         return $data->orderBy('id', 'DESC')
                     ->paginate(parent::LIMIT);
+    }
+
+    public function storeManyToMany($categoryParams = [], $brands = []) {
+        DB::beginTransaction();
+
+        try {
+            $category = $this->model->create($categoryParams);
+            $category->brands()->sync($brands);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return $e;
+        }
+    }
+
+    public function updateCategory(Category $category, $categoryParams = [], $brands = []) {
+        DB::beginTransaction();
+
+        try {
+            $category->update($categoryParams);
+            $category->brands()->sync($brands);
+
+            DB::commit();
+
+            return 1;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return $e;
+        }
     }
 }
